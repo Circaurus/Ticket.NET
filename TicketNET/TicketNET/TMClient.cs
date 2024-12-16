@@ -13,6 +13,8 @@ namespace TicketNET
         private const string Endpoint = "https://app.ticketmaster.com/discovery/v2/";
         private const string eventRoute = "events.json?";
         private const string classificationName = "classificationName=music&";
+        private const string countryCode = "countryCode=US&";
+        private string eventParams = classificationName + countryCode;
 
         public string Country {  get; private set; }
 
@@ -24,7 +26,7 @@ namespace TicketNET
 
         public async Task<Events> GetEventsAsync(string apiKey)
         {
-            var result = await GetEventRequestAsync<Events>(classificationName, apiKey);
+            var result = await GetEventRequestAsync<Events>(eventParams, apiKey);
 
             return result;
         }

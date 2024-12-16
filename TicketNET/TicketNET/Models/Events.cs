@@ -21,8 +21,21 @@ namespace TicketNET.Models
             public string description { get; set; }
             public string id { get; set; }
             public string url { get; set; }
+            public Sales[] sales { get; set; }
             public Dates[] dates { get; set; }
 
+        }
+
+        public class Sales
+        {
+            public PublicSalesInfo[] publicSales { get; set; }
+        }
+
+        public class PublicSalesInfo
+        {
+            public string startDateTime { get; set; }
+            public bool startTBD { get; set; }
+            public string endDateTime { get; set; }
         }
 
         public class Dates
