@@ -71,7 +71,7 @@ namespace TicketNET
 
             catch (Exception ex)
             {
-                return default(T);
+                return default(string);
             }
         }
 
