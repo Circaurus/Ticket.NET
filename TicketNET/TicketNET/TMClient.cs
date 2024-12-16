@@ -54,6 +54,26 @@ namespace TicketNET
             }
         }
 
+        private async Task<string> GetRawEventRequestAsync<T>(string request, string apiKey)
+        {
+            try
+            {
+                using (var client = new HttpClient())
+                {
+                    client.BaseAddress = new Uri(Endpoint);
+
+                    var result = await client.GetAsync(eventRoute + request + apiKey);
+                    var contents = await result.Content.ReadAsStringAsync();
+
+                    return contents;
+                }
+            }
+
+            catch (Exception ex)
+            {
+                return default(T);
+            }
+        }
 
     }
 }
